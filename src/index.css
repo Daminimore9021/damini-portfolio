@@ -46,7 +46,7 @@
   --card-bg: rgba(15, 15, 26, 0.6);
   --glass-bg: rgba(255, 255, 255, 0.05);
   --border-color: rgba(255, 255, 255, 0.1);
-  --nav-bg: rgba(15, 15, 26, 0.8);
+  --nav-bg: rgba(15, 15, 26, 0.95);
 }
 
 /* Light Mode Overrides */
@@ -57,7 +57,7 @@ html:not(.dark) {
   --card-bg: rgba(255, 255, 255, 0.8);
   --glass-bg: rgba(15, 23, 42, 0.05);
   --border-color: rgba(15, 23, 42, 0.1);
-  --nav-bg: rgba(255, 255, 255, 0.8);
+  --nav-bg: rgba(248, 250, 252, 0.95);
 }
 
 body {

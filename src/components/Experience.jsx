@@ -4,7 +4,7 @@ import { Calendar, MapPin, Building2, Briefcase } from 'lucide-react';
 
 const experiences = [
     {
-        title: "AI Workflow Automation Intern",
+        title: "AI Workflow Automation",
         company: "NITI AI Pvt Ltd (Ahmedabad)",
         duration: "08/2025 - Present",
         location: "Remote/In-office",

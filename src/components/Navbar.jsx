@@ -14,6 +14,17 @@ const Navbar = () => {
         } else {
             document.documentElement.classList.remove('dark');
         }
+
+        const handleScroll = () => {
+            if (window.scrollY > 20) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, [darkMode]);
 
     const toggleTheme = () => setDarkMode(!darkMode);
@@ -34,12 +45,14 @@ const Navbar = () => {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'py-4 glass border-b border-white/10' : 'py-6 bg-transparent'
+            className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${scrolled
+                ? 'py-4 bg-[var(--nav-bg)] backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.1)] border-b border-white/10'
+                : 'py-6 bg-transparent'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 <a href="#" className="text-2xl font-bold font-display tracking-wider text-gradient">
-                    DAMINI
+                    DAMINI DIMENSION
                 </a>
 
                 {/* Desktop Menu */}
@@ -119,7 +132,7 @@ const Navbar = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </motion.nav>
+        </motion.nav >
     );
 };
 

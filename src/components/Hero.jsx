@@ -1,9 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation'; // Need to install this or implement custom
-// Since we didn't add react-type-animation to install list, I'll implement a simple CSS/state based one or use Framer Motion
-// Actually, Framer Motion can do staggering. For typing, it's easier to simulate or just use a static tagline for now to save complexity, 
-// OR I can quickly add `react-type-animation` to dependencies. I'll add the dependency.
+import { TypeAnimation } from 'react-type-animation';
+import daminiImg from '../assets/images/damini.jpeg';
 
 const Hero = () => {
     return (
@@ -22,9 +20,9 @@ const Hero = () => {
                     className="mb-6 inline-block"
                 >
                     <img
-                        src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=400&h=400"
-                        alt="Damini"
-                        className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white/10 shadow-lg mx-auto object-cover"
+                        src={daminiImg}
+                        alt="Damini More"
+                        className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-cyan-500/30 shadow-[0_0_30px_rgba(6,182,212,0.2)] mx-auto object-cover"
                     />
                 </motion.div>
 
@@ -52,7 +50,7 @@ const Hero = () => {
                             1000,
                             'LLM & RAG Systems Integrator',
                             1000,
-                            'Intern @ NITI.AI',
+                            'AI Workflow Automation @ NITI.AI',
                             1000,
                             'Building Intelligent Systems',
                             1000

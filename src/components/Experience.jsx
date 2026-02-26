@@ -17,13 +17,16 @@ const experiences = [
     },
     {
         title: "Data Procedures",
-        company: "NITI AI Pvt Ltd (Ahmedabad)",
+        company: "EnFuse Solution Pvt Ltd, Pune",
         duration: "08/2024 - 10/2024",
-        location: "Remote",
+        location: "Pune",
         bullets: [
-            "Assisted in data organization and procedural workflows for AI model training preparation.",
-            "Collaborated on small-scale automation scripts to streamline data validation.",
-            "Gained foundational experience in enterprise-level AI ecosystems."
+            "Results-driven Data Procedures Specialist with expertise in data management and workflow optimization.",
+            "Data Entry: Accurately entered data into custom-built database application.",
+            "Data Processing: Processed data to ensure consistency and accuracy.",
+            "Data Management: Managed data to ensure integrity, security, and compliance.",
+            "Reporting: Generated reports for NABARD stakeholders.",
+            "Troubleshooting: Resolved data-related issues."
         ]
     }
 ];

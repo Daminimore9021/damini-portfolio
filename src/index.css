@@ -13,28 +13,180 @@
   --font-display: "Outfit", sans-serif;
   --font-body: "Inter", sans-serif;
 
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-glow: glow 2s ease-in-out infinite alternate;
-
+  /* Float animation */
   @keyframes float {
 
     0%,
     100% {
-      transform: translateY(0);
+      transform: translateY(0px);
     }
 
     50% {
-      transform: translateY(-20px);
+      transform: translateY(-22px);
     }
   }
 
+  /* Slow drift for background orbs */
+  @keyframes orb-drift-1 {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+      transform: translate(60px, -40px) scale(1.08);
+    }
+
+    66% {
+      transform: translate(-40px, 30px) scale(0.95);
+    }
+
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+
+  @keyframes orb-drift-2 {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+      transform: translate(-50px, 60px) scale(1.05);
+    }
+
+    66% {
+      transform: translate(40px, -30px) scale(0.97);
+    }
+
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+
+  @keyframes orb-drift-3 {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+      transform: translate(30px, 50px) scale(1.06);
+    }
+
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+
+  /* Gradient shift */
+  @keyframes gradient-shift {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Aurora pulse */
+  @keyframes aurora {
+
+    0%,
+    100% {
+      opacity: 0.4;
+      transform: scaleX(1);
+    }
+
+    50% {
+      opacity: 0.7;
+      transform: scaleX(1.08);
+    }
+  }
+
+  /* Shimmer sweep */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(200%);
+    }
+  }
+
+  /* Pulse ring */
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.85);
+      opacity: 0.6;
+    }
+
+    100% {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+
+  /* Glow */
   @keyframes glow {
     from {
       box-shadow: 0 0 10px -10px var(--color-neon-teal);
     }
 
     to {
-      box-shadow: 0 0 20px 5px var(--color-neon-teal);
+      box-shadow: 0 0 28px 4px var(--color-neon-teal);
+    }
+  }
+
+  /* Spin slow */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Text gradient flow */
+  @keyframes gradient-text {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Fade up — for scroll reveals */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scale in */
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.88);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 }
@@ -99,6 +251,88 @@ body {
 
 .bg-main {
   background-color: var(--bg-color);
+}
+
+/* ─── Animation Utilities ──────────────────────────── */
+
+/* Shimmer card — sweeping light effect on hover */
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.06) 50%,
+      transparent 60%);
+  animation: shimmer 3.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Glow border on hover */
+.glow-border {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glow-border:hover {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.18), 0 0 40px rgba(168, 85, 247, 0.10);
+  border-color: rgba(0, 240, 255, 0.3) !important;
+}
+
+/* Animate gradient text - flowing */
+.gradient-flow {
+  background: linear-gradient(270deg, #00f0ff, #a855f7, #3b82f6, #00f0ff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* Spin slow utility */
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+/* Fade up utility */
+.animate-fade-up {
+  animation: fade-up 0.6s ease forwards;
+}
+
+/* Scale in utility */
+.animate-scale-in {
+  animation: scale-in 0.4s ease forwards;
+}
+
+/* Pulse ring utility */
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Float utility */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glass card enhanced with shimmer */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 240, 255, 0.07);
+  border-color: rgba(0, 240, 255, 0.15);
 }
 
 /* Markdown Styling for Chatbot */

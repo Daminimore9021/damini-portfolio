@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = ({ onResumeClick }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [darkMode, setDarkMode] = useState(true);
@@ -31,14 +31,14 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'Home', href: '#' },
-        { name: 'About', href: '#about' },
-        { name: 'Projects', href: '#portfolio' },
+        { name: 'About', href: '#about-me' },
         { name: 'Experience', href: '#experience' },
+        { name: 'Education', href: '#education' },
+        { name: 'Projects', href: '#portfolio' },
         { name: 'Skills', href: '#skills' },
-        { name: 'Feedback', href: '#feedback' },
         { name: 'Contact', href: '#contact' },
-        { name: 'Resume', href: '#resume' },
     ];
+    // Resume handled separately via modal trigger
 
     return (
         <motion.nav
@@ -61,12 +61,22 @@ const Navbar = () => {
                         <a
                             key={link.name}
                             href={link.href}
+                            target={link.external ? '_blank' : undefined}
+                            rel={link.external ? 'noopener noreferrer' : undefined}
                             className="text-sm font-medium opacity-70 hover:opacity-100 hover:text-neon-teal transition-all"
                             style={{ color: 'var(--text-primary)' }}
                         >
                             {link.name}
                         </a>
                     ))}
+                    {/* Resume button — opens modal */}
+                    <button
+                        onClick={onResumeClick}
+                        className="text-sm font-medium opacity-70 hover:opacity-100 hover:text-neon-teal transition-all"
+                        style={{ color: 'var(--text-primary)' }}
+                    >
+                        Resume
+                    </button>
                     <button
                         onClick={toggleTheme}
                         className="p-2 rounded-full hover:bg-white/10 transition-colors"
@@ -113,6 +123,8 @@ const Navbar = () => {
                                 <a
                                     key={link.name}
                                     href={link.href}
+                                    target={link.external ? '_blank' : undefined}
+                                    rel={link.external ? 'noopener noreferrer' : undefined}
                                     onClick={() => setIsOpen(false)}
                                     className="opacity-70 hover:opacity-100 hover:text-neon-teal py-2"
                                     style={{ color: 'var(--text-primary)' }}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Damini More — AI Workflow Insights</title>
+    <link>https://damini-portfolio-xi.vercel.app</link>
+    <description>Thoughts on AI automation, RAG systems, and no-code tools by Damini More.</description>
+    <language>en-us</language>
+    <atom:link href="https://damini-portfolio-xi.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Fri, 27 Feb 2026 15:57:57 GMT</lastBuildDate>
+  <item>
+    <title><![CDATA[undefined]]></title>
+    <link>https://damini-portfolio-xi.vercel.app/blog/how-i-built-400-workflows</link>
+    <guid>https://damini-portfolio-xi.vercel.app/blog/how-i-built-400-workflows</guid>
+    <pubDate>Invalid Date</pubDate>
+    <description><![CDATA[]]></description>
+  </item>
+  <item>
+    <title><![CDATA[undefined]]></title>
+    <link>https://damini-portfolio-xi.vercel.app/blog/top-no-code-tools</link>
+    <guid>https://damini-portfolio-xi.vercel.app/blog/top-no-code-tools</guid>
+    <pubDate>Invalid Date</pubDate>
+    <description><![CDATA[]]></description>
+  </item>
+  </channel>
+</rss>

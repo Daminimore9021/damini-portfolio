@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 
 const Navbar = ({ onResumeClick }) => {
@@ -79,6 +80,15 @@ const Navbar = ({ onResumeClick }) => {
                         Resume
                         <span className="absolute -bottom-1 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-300" style={{ background: 'linear-gradient(to right, #00f0ff, #a855f7)' }} />
                     </button>
+                    {/* Blog link */}
+                    <Link
+                        to="/blog"
+                        className="relative text-sm font-medium opacity-60 hover:opacity-100 transition-all group"
+                        style={{ color: 'var(--text-primary)' }}
+                    >
+                        Blog
+                        <span className="absolute -bottom-1 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-300" style={{ background: 'linear-gradient(to right, #a855f7, #00f0ff)' }} />
+                    </Link>
                     <button
                         onClick={toggleTheme}
                         className="p-2 rounded-full hover:bg-white/10 transition-colors"
@@ -140,6 +150,14 @@ const Navbar = ({ onResumeClick }) => {
                                     {link.name}
                                 </a>
                             ))}
+                            <Link
+                                to="/blog"
+                                onClick={() => setIsOpen(false)}
+                                className="opacity-70 hover:opacity-100 py-2 font-medium"
+                                style={{ color: '#a855f7' }}
+                            >
+                                ✦ Blog
+                            </Link>
                             <a
                                 href="#contact"
                                 onClick={() => setIsOpen(false)}

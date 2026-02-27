@@ -6,41 +6,41 @@
     <description>Thoughts on AI automation, RAG systems, and no-code tools by Damini More.</description>
     <language>en-us</language>
     <atom:link href="https://damini-portfolio-xi.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 27 Feb 2026 16:13:15 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 16:16:58 GMT</lastBuildDate>
   <item>
-    <title><![CDATA[undefined]]></title>
-    <link>https://damini-portfolio-xi.vercel.app/blog/agentic-ai-and-ai-agents</link>
-    <guid>https://damini-portfolio-xi.vercel.app/blog/agentic-ai-and-ai-agents</guid>
-    <pubDate>Invalid Date</pubDate>
-    <description><![CDATA[]]></description>
-  </item>
-  <item>
-    <title><![CDATA[undefined]]></title>
-    <link>https://damini-portfolio-xi.vercel.app/blog/how-i-built-400-workflows</link>
-    <guid>https://damini-portfolio-xi.vercel.app/blog/how-i-built-400-workflows</guid>
-    <pubDate>Invalid Date</pubDate>
-    <description><![CDATA[]]></description>
-  </item>
-  <item>
-    <title><![CDATA[undefined]]></title>
+    <title><![CDATA[LangChain, LangGraph & LlamaIndex: The AI Developer Toolkit Explained]]></title>
     <link>https://damini-portfolio-xi.vercel.app/blog/langchain-langgraph-llamaindex</link>
     <guid>https://damini-portfolio-xi.vercel.app/blog/langchain-langgraph-llamaindex</guid>
-    <pubDate>Invalid Date</pubDate>
-    <description><![CDATA[]]></description>
+    <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[When to use LangChain, LangGraph, or LlamaIndex for building AI agents and RAG systems — a practical comparison from someone who has used all three in production.]]></description>
   </item>
   <item>
-    <title><![CDATA[undefined]]></title>
+    <title><![CDATA[Agentic AI & AI Agents: The Future of Workflow Automation]]></title>
+    <link>https://damini-portfolio-xi.vercel.app/blog/agentic-ai-and-ai-agents</link>
+    <guid>https://damini-portfolio-xi.vercel.app/blog/agentic-ai-and-ai-agents</guid>
+    <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[What are AI agents and agentic AI? How do they differ from simple LLM calls? A practical breakdown of autonomous AI systems, multi-agent pipelines, and generative AI automation in real workflows.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[LLMs & RAG Explained: How I Use Them to Build Smarter AI Workflows]]></title>
     <link>https://damini-portfolio-xi.vercel.app/blog/llms-and-rag-explained</link>
     <guid>https://damini-portfolio-xi.vercel.app/blog/llms-and-rag-explained</guid>
-    <pubDate>Invalid Date</pubDate>
-    <description><![CDATA[]]></description>
+    <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[A practical guide to Large Language Models and Retrieval-Augmented Generation — what they are, how they work together, and how I use them to build production AI workflows at NITI.AI.]]></description>
   </item>
   <item>
-    <title><![CDATA[undefined]]></title>
+    <title><![CDATA[Top 5 No-Code Automation Tools I Use Daily]]></title>
     <link>https://damini-portfolio-xi.vercel.app/blog/top-no-code-tools</link>
     <guid>https://damini-portfolio-xi.vercel.app/blog/top-no-code-tools</guid>
-    <pubDate>Invalid Date</pubDate>
-    <description><![CDATA[]]></description>
+    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[A hands-on comparison of Make.com, n8n, Pucho.ai, Lindy.ai, and Activepieces for building AI-powered workflows — with real pros, cons, and use cases.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[How I Built 400+ AI Workflows with RAG & No-Code Tools]]></title>
+    <link>https://damini-portfolio-xi.vercel.app/blog/how-i-built-400-workflows</link>
+    <guid>https://damini-portfolio-xi.vercel.app/blog/how-i-built-400-workflows</guid>
+    <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Lessons from automating CRM, email, and productivity pipelines at NITI.AI using Pucho.ai, LLMs, RAG, and agentic systems.]]></description>
   </item>
   </channel>
 </rss>

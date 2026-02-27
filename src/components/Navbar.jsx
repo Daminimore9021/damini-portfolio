@@ -63,19 +63,21 @@ const Navbar = ({ onResumeClick }) => {
                             href={link.href}
                             target={link.external ? '_blank' : undefined}
                             rel={link.external ? 'noopener noreferrer' : undefined}
-                            className="text-sm font-medium opacity-70 hover:opacity-100 hover:text-neon-teal transition-all"
+                            className="relative text-sm font-medium opacity-60 hover:opacity-100 transition-all group"
                             style={{ color: 'var(--text-primary)' }}
                         >
                             {link.name}
+                            <span className="absolute -bottom-1 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-300" style={{ background: 'linear-gradient(to right, #00f0ff, #a855f7)' }} />
                         </a>
                     ))}
                     {/* Resume button — opens modal */}
                     <button
                         onClick={onResumeClick}
-                        className="text-sm font-medium opacity-70 hover:opacity-100 hover:text-neon-teal transition-all"
+                        className="relative text-sm font-medium opacity-60 hover:opacity-100 transition-all group"
                         style={{ color: 'var(--text-primary)' }}
                     >
                         Resume
+                        <span className="absolute -bottom-1 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-300" style={{ background: 'linear-gradient(to right, #00f0ff, #a855f7)' }} />
                     </button>
                     <button
                         onClick={toggleTheme}
@@ -86,7 +88,13 @@ const Navbar = ({ onResumeClick }) => {
                     </button>
                     <a
                         href="#contact"
-                        className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-medium text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow"
+                        className="px-6 py-2.5 rounded-full text-white font-semibold text-sm transition-all"
+                        style={{
+                            background: 'linear-gradient(135deg, #00f0ff, #a855f7)',
+                            boxShadow: '0 0 18px rgba(0, 240, 255, 0.25)',
+                        }}
+                        onMouseEnter={e => e.currentTarget.style.boxShadow = '0 0 30px rgba(0, 240, 255, 0.5)'}
+                        onMouseLeave={e => e.currentTarget.style.boxShadow = '0 0 18px rgba(0, 240, 255, 0.25)'}
                     >
                         Let's Connect
                     </a>

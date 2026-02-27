@@ -140,6 +140,30 @@
     }
   }
 
+  /* Neon card glow pulse */
+  @keyframes card-glow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.15), 0 0 30px rgba(168, 85, 247, 0.08);
+    }
+
+    50% {
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.25), 0 0 60px rgba(0, 240, 255, 0.12);
+    }
+  }
+
+  /* Rotating border */
+  @keyframes rotate-border {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   /* Spin slow */
   @keyframes spin-slow {
     from {
@@ -189,7 +213,107 @@
       transform: scale(1);
     }
   }
+
+  /* Timeline draw */
+  @keyframes timeline-draw {
+    from {
+      height: 0%;
+    }
+
+    to {
+      height: 100%;
+    }
+  }
+
+  /* Neon flicker */
+  @keyframes neon-flicker {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    42% {
+      opacity: 0.9;
+    }
+
+    44% {
+      opacity: 0.4;
+    }
+
+    46% {
+      opacity: 0.9;
+    }
+
+    72% {
+      opacity: 1;
+    }
+  }
+
+  /* Count up placeholder */
+  @keyframes count-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Arrow flow */
+  @keyframes arrow-flow {
+    0% {
+      stroke-dashoffset: 100;
+      opacity: 0;
+    }
+
+    30% {
+      opacity: 1;
+    }
+
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+
+  /* Holographic shimmer */
+  @keyframes holographic {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Badge pop */
+  @keyframes badge-pop {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    80% {
+      transform: scale(1.05);
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
 }
+
+/* ─── CSS Variables ────────────────────────────────── */
 
 :root {
   --bg-color: #0f0f1a;
@@ -199,6 +323,9 @@
   --glass-bg: rgba(255, 255, 255, 0.05);
   --border-color: rgba(255, 255, 255, 0.1);
   --nav-bg: rgba(15, 15, 26, 0.95);
+  --neon-teal: #00f0ff;
+  --neon-purple: #a855f7;
+  --neon-blue: #3b82f6;
 }
 
 /* Light Mode Overrides */
@@ -212,6 +339,8 @@ html:not(.dark) {
   --nav-bg: rgba(248, 250, 252, 0.95);
 }
 
+/* ─── Base ────────────────────────────────────────── */
+
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
@@ -220,18 +349,48 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Subtle neon grid overlay on dark mode */
+html.dark body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* ─── Navbar / Glass ──────────────────────────────── */
+
 .glass {
   background: var(--nav-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
 }
 
+/* ─── Glass Card ─────────────────────────────────── */
+
 .glass-card {
   background: var(--card-bg);
   backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.4s ease, transform 0.3s ease, border-color 0.3s ease;
 }
+
+.glass-card:hover {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(0, 240, 255, 0.1),
+    0 0 50px rgba(168, 85, 247, 0.07);
+  border-color: rgba(0, 240, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ─── Text Utilities ──────────────────────────────── */
 
 .text-gradient {
   background: linear-gradient(to right, #00f0ff, #a855f7);
@@ -240,7 +399,22 @@ body {
   color: transparent;
 }
 
-/* Reusable theme-aware classes */
+.text-gradient-warm {
+  background: linear-gradient(to right, #f59e0b, #ef4444, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-flow {
+  background: linear-gradient(270deg, #00f0ff, #a855f7, #3b82f6, #00f0ff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 6s ease infinite;
+}
+
 .text-main {
   color: var(--text-primary);
 }
@@ -253,9 +427,28 @@ body {
   background-color: var(--bg-color);
 }
 
-/* ─── Animation Utilities ──────────────────────────── */
+.text-neon-teal {
+  color: var(--neon-teal);
+}
 
-/* Shimmer card — sweeping light effect on hover */
+/* ─── Neon Glow Border ───────────────────────────── */
+
+.glow-border {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glow-border:hover {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.18), 0 0 40px rgba(168, 85, 247, 0.10);
+  border-color: rgba(0, 240, 255, 0.3) !important;
+}
+
+/* Pulsing glow card */
+.card-glow-pulse {
+  animation: card-glow 4s ease-in-out infinite;
+}
+
+/* ─── Shimmer Card ───────────────────────────────── */
+
 .shimmer-card {
   position: relative;
   overflow: hidden;
@@ -268,74 +461,289 @@ body {
   left: 0;
   width: 40%;
   height: 100%;
-  background: linear-gradient(105deg,
-      transparent 40%,
-      rgba(255, 255, 255, 0.06) 50%,
-      transparent 60%);
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.06) 50%, transparent 60%);
   animation: shimmer 3.5s ease-in-out infinite;
   will-change: transform;
+  pointer-events: none;
 }
 
-/* Glow border on hover */
-.glow-border {
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+/* ─── Avatar Ring ────────────────────────────────── */
+
+.avatar-ring {
+  position: relative;
 }
 
-.glow-border:hover {
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.18), 0 0 40px rgba(168, 85, 247, 0.10);
-  border-color: rgba(0, 240, 255, 0.3) !important;
-}
-
-/* Animate gradient text - flowing */
-.gradient-flow {
-  background: linear-gradient(270deg, #00f0ff, #a855f7, #3b82f6, #00f0ff);
+.avatar-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00f0ff, #a855f7, #3b82f6, #00f0ff);
   background-size: 300% 300%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradient-shift 6s ease infinite;
+  animation: rotate-border 4s linear infinite, gradient-shift 4s ease infinite;
+  z-index: -1;
+  filter: blur(2px);
 }
 
-/* Spin slow utility */
+/* ─── Flip Card (3D skill cards) ─────────────────── */
+
+.flip-card-container {
+  perspective: 1000px;
+  height: 100%;
+}
+
+.flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.flip-card-container:hover .flip-card {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 1rem;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* ─── Neon Badge ─────────────────────────────────── */
+
+.neon-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border: 1px solid;
+  letter-spacing: 0.03em;
+  transition: all 0.2s ease;
+}
+
+.neon-badge:hover {
+  filter: brightness(1.3);
+  transform: scale(1.05);
+}
+
+/* Tech-specific badge colors */
+.badge-react {
+  background: rgba(97, 219, 251, 0.12);
+  border-color: rgba(97, 219, 251, 0.4);
+  color: #61dbfb;
+}
+
+.badge-node {
+  background: rgba(104, 159, 56, 0.12);
+  border-color: rgba(104, 159, 56, 0.4);
+  color: #68a63a;
+}
+
+.badge-ts {
+  background: rgba(49, 120, 198, 0.12);
+  border-color: rgba(49, 120, 198, 0.4);
+  color: #3178c6;
+}
+
+.badge-py {
+  background: rgba(255, 215, 0, 0.12);
+  border-color: rgba(255, 215, 0, 0.35);
+  color: #ffd700;
+}
+
+.badge-php {
+  background: rgba(119, 123, 179, 0.12);
+  border-color: rgba(119, 123, 179, 0.4);
+  color: #777bb4;
+}
+
+.badge-mysql {
+  background: rgba(0, 117, 143, 0.12);
+  border-color: rgba(0, 117, 143, 0.4);
+  color: #00758f;
+}
+
+.badge-next {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+}
+
+.badge-prisma {
+  background: rgba(44, 62, 80, 0.2);
+  border-color: rgba(44, 200, 200, 0.3);
+  color: #2cc9c9;
+}
+
+.badge-tailwind {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.35);
+  color: #06b6d4;
+}
+
+.badge-html {
+  background: rgba(228, 77, 38, 0.1);
+  border-color: rgba(228, 77, 38, 0.35);
+  color: #e44d26;
+}
+
+.badge-css {
+  background: rgba(38, 77, 228, 0.1);
+  border-color: rgba(38, 77, 228, 0.35);
+  color: #264de4;
+}
+
+.badge-js {
+  background: rgba(247, 223, 30, 0.1);
+  border-color: rgba(247, 223, 30, 0.35);
+  color: #f7df1e;
+}
+
+.badge-vite {
+  background: rgba(189, 52, 254, 0.1);
+  border-color: rgba(189, 52, 254, 0.35);
+  color: #bd34fe;
+}
+
+.badge-default {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #9ca3af;
+}
+
+/* ─── Neon Timeline ──────────────────────────────── */
+
+.timeline-line {
+  background: linear-gradient(to bottom, transparent, #00f0ff 20%, #a855f7 80%, transparent);
+}
+
+.timeline-dot {
+  position: relative;
+}
+
+.timeline-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 240, 255, 0.4);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* ─── Workflow Arrow ─────────────────────────────── */
+
+.workflow-arrow {
+  color: rgba(0, 240, 255, 0.5);
+}
+
+/* ─── Holographic Card ───────────────────────────── */
+
+.holo-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.holo-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg,
+      transparent 20%,
+      rgba(0, 240, 255, 0.04) 35%,
+      rgba(168, 85, 247, 0.06) 50%,
+      transparent 65%);
+  background-size: 200% 200%;
+  animation: holographic 6s ease infinite;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+/* ─── Animation Utilities ────────────────────────── */
+
 .animate-spin-slow {
   animation: spin-slow 12s linear infinite;
 }
 
-/* Fade up utility */
 .animate-fade-up {
   animation: fade-up 0.6s ease forwards;
 }
 
-/* Scale in utility */
 .animate-scale-in {
   animation: scale-in 0.4s ease forwards;
 }
 
-/* Pulse ring utility */
 .animate-pulse-ring {
   animation: pulse-ring 2s ease-out infinite;
 }
 
-/* Float utility */
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Glass card enhanced with shimmer */
-.glass-card {
-  background: var(--card-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+.animate-glow {
+  animation: glow 1.5s ease-in-out infinite alternate;
 }
 
-.glass-card:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 240, 255, 0.07);
-  border-color: rgba(0, 240, 255, 0.15);
+.animate-neon-flicker {
+  animation: neon-flicker 4s ease-in-out infinite;
 }
 
-/* Markdown Styling for Chatbot */
+/* ─── Scrollbar ───────────────────────────────────── */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #00f0ff, #a855f7);
+  border-radius: 10px;
+}
+
+/* ─── Neon Focus Inputs ──────────────────────────── */
+
+.neon-input {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neon-input:focus {
+  border-color: rgba(0, 240, 255, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.08), 0 0 15px rgba(0, 240, 255, 0.1);
+  outline: none;
+}
+
+/* ─── Section Divider ────────────────────────────── */
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0, 240, 255, 0.3), rgba(168, 85, 247, 0.3), transparent);
+}
+
+/* ─── Markdown Styling for Chatbot ─────────────────── */
+
 .markdown-content p {
   margin-bottom: 0.75rem;
 }

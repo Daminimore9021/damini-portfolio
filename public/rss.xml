@@ -6,11 +6,32 @@
     <description>Thoughts on AI automation, RAG systems, and no-code tools by Damini More.</description>
     <language>en-us</language>
     <atom:link href="https://damini-portfolio-xi.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 27 Feb 2026 15:57:57 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 16:13:15 GMT</lastBuildDate>
+  <item>
+    <title><![CDATA[undefined]]></title>
+    <link>https://damini-portfolio-xi.vercel.app/blog/agentic-ai-and-ai-agents</link>
+    <guid>https://damini-portfolio-xi.vercel.app/blog/agentic-ai-and-ai-agents</guid>
+    <pubDate>Invalid Date</pubDate>
+    <description><![CDATA[]]></description>
+  </item>
   <item>
     <title><![CDATA[undefined]]></title>
     <link>https://damini-portfolio-xi.vercel.app/blog/how-i-built-400-workflows</link>
     <guid>https://damini-portfolio-xi.vercel.app/blog/how-i-built-400-workflows</guid>
+    <pubDate>Invalid Date</pubDate>
+    <description><![CDATA[]]></description>
+  </item>
+  <item>
+    <title><![CDATA[undefined]]></title>
+    <link>https://damini-portfolio-xi.vercel.app/blog/langchain-langgraph-llamaindex</link>
+    <guid>https://damini-portfolio-xi.vercel.app/blog/langchain-langgraph-llamaindex</guid>
+    <pubDate>Invalid Date</pubDate>
+    <description><![CDATA[]]></description>
+  </item>
+  <item>
+    <title><![CDATA[undefined]]></title>
+    <link>https://damini-portfolio-xi.vercel.app/blog/llms-and-rag-explained</link>
+    <guid>https://damini-portfolio-xi.vercel.app/blog/llms-and-rag-explained</guid>
     <pubDate>Invalid Date</pubDate>
     <description><![CDATA[]]></description>
   </item>
